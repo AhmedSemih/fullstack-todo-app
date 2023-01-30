@@ -50,6 +50,7 @@ a {
 /* Form */
 .form-div {
     width: 30%;
+    height:fit-content;
 }
 
 .form-control:focus, .form-check-input:focus {
@@ -59,6 +60,12 @@ a {
 
 .form-check-input:checked {
     background-color: rgb(20,183,05);
+}
+
+.validation-summary-errors ul{
+    padding:8px;
+    border: 1px solid red;
+    font-size:20px;
 }
 
 /* Media Queries */
