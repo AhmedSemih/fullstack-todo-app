@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims;
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -18,10 +20,20 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1 justify-content-sm-end">
-                        <li class="nav-item d-flex flex-column flex-sm-row">
-                            <button class="btn text-green fw-bold fs-6">Login</button>
-                            <button class="btn bg-green text-white fw-bold fs-6">Register</button>
-                        </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item d-flex align-items-center">
+                                <p class="d-block m-0 text-uppercase fw-bold text-green me-sm-3">@User.FindFirst(ClaimTypes.Name).Value</p>
+                                <a asp-action="logout" asp-controller="auth" class="btn text-white bg-green fw-bold fs-6">Logout</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item d-flex flex-column flex-sm-row">
+                                <a asp-action="login" asp-controller="auth" class="btn text-green fw-bold fs-6">Login</a>
+                                <a asp-action="register" asp-controller="auth" class="btn bg-green text-white fw-bold fs-6">Register</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
