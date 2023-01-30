@@ -1,0 +1,39 @@
+﻿@model RegisterViewModel;
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="w-100 pt-md-5">
+    <div class="form-div m-auto">
+        <h1 class="text-center fw-light">Register</h1>
+        <hr />
+        <form method="post" asp-action="Register" asp-controller="Auth">
+            <div asp-validation-summary="ModelOnly" class="text-danger text-sm text-center" ></div>
+            <div class="input-group mt-3">
+                <span class="input-group-text bg-green text-white "><i class="fa-solid fa-envelope"></i></span>
+                <input asp-for="Email" type="text"  class="form-control" placeholder="Email">
+            </div>
+            <span class="text-danger text-sm" asp-validation-for="Email" ></span>
+            <div class="input-group mt-3">
+                <span class="input-group-text bg-green text-white"><i class="fa-solid fa-user"></i></span>
+                <input asp-for="Username" type="text" class="form-control" placeholder="Username">
+            </div>
+            <span class="text-danger text-sm" asp-validation-for="Username"></span>
+            <div class="input-group mt-3">
+                <span class="input-group-text bg-green text-white"><i class="fa-solid fa-lock"></i></span>
+                <input asp-for="Password" type="password" class="form-control" placeholder="Password">
+            </div>
+            <span class="text-danger text-sm" asp-validation-for="Password"></span>
+            <div class="input-group mt-3">
+                <span class="input-group-text bg-green text-white"><i class="fa-solid fa-lock"></i></span>
+                <input asp-for="RePassword" type="password" class="form-control" placeholder="Re-Password">
+            </div>
+            <span class="text-danger text-sm" asp-validation-for="RePassword"></span>
+            <p class="text-muted text-center text-sm mt-3">
+                By creating an account, you are agreeing to our 
+                <span class="text-green cursor-pointer">Terms of Service</span> and <span class="text-green cursor-pointer">Privacy Policy</span>.
+                </p>
+            <button class="btn mt-3 bg-green text-white form-control fw-bold" type="submit">Register</button>
+        </form>
+    </div>
+</div>

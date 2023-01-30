@@ -1,3 +1,4 @@
+/* Base */
 body {
     padding: 0;
     margin: 0;
@@ -15,6 +16,19 @@ a {
     color: inherit;
 }
 
+.main {
+    min-height: 84vh;
+}
+
+.text-sm{
+    font-size:14px;
+}
+
+.cursor-pointer{
+    cursor:pointer;
+}
+
+/* Green Text & Background */
 .bg-green {
     background-color: rgb(30,203,08);
     transition-duration: .2s;
@@ -33,6 +47,29 @@ a {
         color: rgb(20,183,05);
     }
 
-.main{
-    min-height:84vh;
+/* Form */
+.form-div {
+    width: 30%;
+}
+
+.form-control:focus, .form-check-input:focus {
+    border-color: rgb(20,183,05);
+    box-shadow: inset 0 1px 1px rgba(20,183,05, 0.075), 0 0 8px rgba(20,183,05, 0.6);
+}
+
+.form-check-input:checked {
+    background-color: rgb(20,183,05);
+}
+
+/* Media Queries */
+@media (max-width:1024px) {
+    .form-div {
+        width: 50%;
+    }
+}
+
+@media (max-width:768px) {
+    .form-div {
+        width: 90%;
+    }
 }
