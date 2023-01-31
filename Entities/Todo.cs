@@ -14,7 +14,7 @@ namespace fullstack_todo_app.Entities
         public string Title { get; set; }
         public string? Description { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
-        public DateTime Deadline { get; set; }
+        public DateTime? Deadline { get; set; }
         public bool Status { get; set; } = true;
 
         [ForeignKey(nameof(User))]
