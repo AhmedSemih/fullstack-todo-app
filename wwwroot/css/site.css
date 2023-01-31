@@ -1,3 +1,7 @@
+:root {
+    --brandGreen: rgb(30,203,08);
+}
+
 /* Base */
 body {
     padding: 0;
@@ -20,26 +24,26 @@ a {
     min-height: 84vh;
 }
 
-.text-sm{
-    font-size:14px;
+.text-sm {
+    font-size: 14px;
 }
 
-.cursor-pointer{
-    cursor:pointer;
+.cursor-pointer {
+    cursor: pointer;
 }
 
 /* Green Text & Background */
 .bg-green {
-    background-color: rgb(30,203,08);
+    background-color: var(--brandGreen) !important;
     transition-duration: .2s;
 }
 
     .bg-green:hover {
-        background-color: rgb(20,193,05);
+        background-color: var(--brandGreen);
     }
 
 .text-green {
-    color: rgb(30,203,08);
+    color: var(--brandGreen);
     transition-duration: .2s;
 }
 
@@ -47,25 +51,48 @@ a {
         color: rgb(20,183,05);
     }
 
+.border-green {
+    border-color: var(--brandGreen);
+}
+
 /* Form */
 .form-div {
     width: 30%;
-    height:fit-content;
+    height: fit-content;
 }
 
-.form-control:focus, .form-check-input:focus {
-    border-color: rgb(20,183,05);
-    box-shadow: inset 0 1px 1px rgba(20,183,05, 0.075), 0 0 8px rgba(20,183,05, 0.6);
+.form-control:focus, .form-check-input:focus, .accordion-button:focus, button:focus {
+    border-color: rgb(20,183,05) !important;
+    box-shadow: inset 0 1px 1px rgba(20,183,05, 0.075), 0 0 8px rgba(20,183,05, 0.6) !important;
 }
 
 .form-check-input:checked {
-    background-color: rgb(20,183,05);
+    background-color: var(--brandGreen);
 }
 
-.validation-summary-errors ul{
-    padding:8px;
+.validation-summary-errors ul {
+    padding: 8px;
     border: 1px solid red;
-    font-size:20px;
+    font-size: 20px;
+}
+
+/* Todos */
+.todos {
+    max-width: 800px;
+}
+
+textarea {
+    resize: none;
+}
+
+.todo-check {
+    margin: 16px;
+    width: 20px;
+    height: 20px;
+}
+
+.accordion-button:not(.collapsed) {
+    color: var(--brandGreen);
 }
 
 /* Media Queries */

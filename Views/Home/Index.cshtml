@@ -1,8 +1,75 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model TodoViewModel;
+@{
+    ViewData["Title"] = "Todos";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="todos mx-auto">
+    <h1 class="display-4 text-center">TODOS</h1>
+    <div class="accordion-item my-3">
+        <h2 class="accordion-header">
+            <button class="accordion-button bg-green text-white fw-bold rounded-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOnes">
+                <i class="fa-solid fa-calendar-days me-2"></i> CREATE A NEW TO-DO
+            </button>
+        </h2>
+        <div id="collapseOnes" class="accordion-collapse collapse show">
+            <div class="accordion-body">
+                <div class="w-100 text-danger text-center text-sm" asp-validation-summary="All"></div>
+                <form method="post" asp-action="CreateTodo" asp-controller="Home">
+                    <div class="d-flex flex-md-row flex-column align-items-center">
+                        <div class="my-3 w-100 p-2">
+                            <div class="mb-3">
+                                <label class="form-label fs-5">Todo</label>
+                                <input asp-for="Title" class="form-control" type="text" placeholder="Title of todo." />
+                            </div>
+                            <div>
+                                <label class="form-label fs-5">Deadline</label>
+                                <input asp-for="Deadline" type="datetime-local" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="w-100 h-100 p-2">
+                            <label class="form-label fs-5">Details</label>
+                            <textarea asp-for="Description" rows="5" class="form-control" placeholder="Details goes here!"></textarea>
+                        </div>
+                    </div>
+                    <div class="d-flex mt-3 mt-sm-0">
+                        <button type="submit" class="btn bg-green text-white mx-2 w-100 fw-bold">Create</button>
+                        <button type="reset" class="btn bg-white text-green border-green border-2 mx-2 w-100 fw-bold">Reset</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div2 class="accordion">
+
+        @{int index = 1; }
+        @foreach (var todo in ViewBag.Todos)
+        {
+            <div class="accordion-item border-green">
+                <h2 class="accordion-header d-flex">
+                    <form asp-action="CompleteTodo" asp-controller="Home">
+                        <input hidden asp-for="Id" type="text" value="@todo.Id" />
+                        <input hidden asp-for="Title" type="text" value="@todo.Title" />
+                        <input hidden asp-for="Description" type="text" value="@todo.Description" />
+                        <input hidden asp-for="Deadline" type="datetime-local" value="@todo.Deadline" />
+                        <input id="@index" asp-for="Status" class="form-check-input p-2 todo-check checkboxes" type="checkbox" checked="@todo.Status" />
+                        <button hidden id="submitBtn_@index" type="submit"></button>
+                    </form>
+                    <button class="accordion-button bg-white text-green fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_@todo.Id">
+                        @todo.Title
+                    </button>
+                </h2>
+                <div id="collapse_@todo.Id" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        @todo.Description
+                        <hr />
+                        <div>
+                            <b class="text-green">Deadline</b> : @(todo.Deadline != null ? todo.Deadline : "-----")
+                        </div>
+                    </div>
+                </div>
+            </div>
+            index++;
+        }
+
+    </div2>
 </div>
